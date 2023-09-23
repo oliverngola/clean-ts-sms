@@ -1,6 +1,6 @@
-import Id from '../../@shared/domain/value-object/id.value-object'
-import Subscription from '../domain/entity/subscription.entity'
-import SubscriptionGateway from '../gateway/subscription.gateway'
+import Id from '../../../@shared/domain/value-object/id.value-object'
+import Subscription from '../../domain/entity/subscription.entity'
+import SubscriptionGateway from '../../domain/gateway/subscription.gateway'
 import SubscriptionModel from './subscription.model'
 
 export default class SubscriptionRepository implements SubscriptionGateway {

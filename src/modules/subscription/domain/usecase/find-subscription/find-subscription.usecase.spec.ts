@@ -1,5 +1,5 @@
-import Id from '../../../@shared/domain/value-object/id.value-object'
-import Subscription from '../../domain/entity/subscription.entity'
+import Id from '../../../../@shared/domain/value-object/id.value-object'
+import Subscription from '../../../domain/entity/subscription.entity'
 import FindSubscriptionUseCase from './find-subscription.usecase'
 
 const subscription = new Subscription({
