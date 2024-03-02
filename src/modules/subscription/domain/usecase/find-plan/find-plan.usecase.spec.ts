@@ -12,6 +12,7 @@ const plan = new Plan({
 
 const mockRepository = () => {
   return {
+    add: jest.fn(),
     find: jest.fn().mockReturnValue(Promise.resolve(plan))
   }
 }

@@ -19,4 +19,8 @@ export default class PlanRepository implements PlanGateway {
       updatedAt: plan.updatedAt
     })
   }
+
+  async add (plan: Plan): Promise<void> {
+
+  }
 }
