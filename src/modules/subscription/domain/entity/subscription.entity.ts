@@ -1,10 +1,13 @@
 import AggregateRoot from '../../../@shared/domain/entity/aggregate-root.interface'
 import BaseEntity from '../../../@shared/domain/entity/base.entity'
 import Id from '../../../@shared/domain/value-object/id.value-object'
+import Client from './client.entity'
+import Plan from './plan.entity'
 
 type SubscriptionProps = {
   id?: Id
-  name: string
+  client: Client
+  plan: Plan
   status?: string
   balance: number
   usedBalance?: number
@@ -15,7 +18,8 @@ type SubscriptionProps = {
 }
 
 export default class Subscription extends BaseEntity implements AggregateRoot {
-  private readonly _name: string
+  private readonly _client: Client
+  private readonly _plan: Plan
   private readonly _status: string
   private readonly _balance: number
   private readonly _usedBalance: number
@@ -24,7 +28,8 @@ export default class Subscription extends BaseEntity implements AggregateRoot {
 
   constructor (props: SubscriptionProps) {
     super(props.id, props.createdAt, props.updatedAt)
-    this._name = props.name
+    this._client = props.client
+    this._plan = props.plan
     this._status = props.status || 'active'
     this._balance = props.balance
     this._usedBalance = props.usedBalance || 0
@@ -32,8 +37,12 @@ export default class Subscription extends BaseEntity implements AggregateRoot {
     this._expirationDate = props.expirationDate
   }
 
-  get name (): string {
-    return this._name
+  get client (): Client {
+    return this._client
+  }
+
+  get plan (): Plan {
+    return this._plan
   }
 
   get status (): string {

@@ -5,6 +5,7 @@ export interface FindSubscripionInputDto {
 export interface FindSubscripionOutputDto {
   id: string
   name: string
+  client: string
   status: string
   startDate: Date
   expirationDate: Date

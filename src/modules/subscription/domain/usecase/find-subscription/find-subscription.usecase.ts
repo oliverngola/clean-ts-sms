@@ -9,7 +9,8 @@ export default class FindSubscriptionUseCase implements UseCaseInterface {
     const subscription = await this._subscriptionRepository.find(input.id)
     return {
       id: subscription.id.id,
-      name: subscription.name,
+      name: subscription.plan.name,
+      client: subscription.client.name,
       status: subscription.status,
       startDate: subscription.startDate,
       expirationDate: subscription.expirationDate,

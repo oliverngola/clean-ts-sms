@@ -1,4 +1,6 @@
-import { Column, Model, PrimaryKey, Table } from 'sequelize-typescript'
+import { Column, Model, PrimaryKey, Table, ForeignKey, BelongsTo } from 'sequelize-typescript'
+import ClientModel from '../../../client-adm/infra/repository/client.model'
+import PlanModel from './plan.model'
 
 @Table({
   tableName: 'subscriptions',
@@ -8,9 +10,6 @@ export default class SubscriptionModel extends Model {
   @PrimaryKey
   @Column({ allowNull: false })
   declare id: string
-
-  @Column({ allowNull: false })
-  declare name: string
 
   @Column({ allowNull: false })
   declare status: string
@@ -26,6 +25,20 @@ export default class SubscriptionModel extends Model {
 
   @Column({ allowNull: false, field: 'expiration_date' })
   declare expirationDate: Date
+
+  @ForeignKey(() => ClientModel)
+  @Column({ allowNull: false })
+  declare client_id: string
+
+  @BelongsTo(() => ClientModel)
+  declare client: ClientModel
+
+  @ForeignKey(() => PlanModel)
+  @Column({ allowNull: false })
+  declare plan_id: string
+
+  @BelongsTo(() => PlanModel)
+  declare plan: PlanModel
 
   @Column({ allowNull: false, field: 'created_at' })
   declare createdAt: Date
